@@ -4,8 +4,8 @@ import os
 from ultralytics.utils.downloads import download
 
 # -------------------------- 仅需修改这里 --------------------------
-epochs = 3  # 测试用小轮数，正式训练改50
-batch_size = 8  # CPU训练建议减小批次，避免内存不足
+epochs = 5  # 测试用小轮数，正式训练改50
+batch_size = 32  # CPU训练建议减小批次，避免内存不足
 # ------------------------------------------------------------------
 
 # 确保模型保存目录存在
@@ -24,7 +24,7 @@ results = model.train(
     epochs=epochs,           # 训练轮数
     batch=batch_size,        # 批次大小（CPU建议8/4）
     imgsz=640,               # 图片尺寸
-    device="cpu",            # CPU训练（有GPU后改0）
+    device=0,            # CPU训练（有GPU后改0）
     project="models/trained",# 权重保存路径
     name="yolov8s_first_train",  # 实验名称
     save=True                # 保存权重
